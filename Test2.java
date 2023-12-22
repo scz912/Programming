@@ -1,0 +1,49 @@
+package test;
+import java.util.*;
+public class Test2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String reversed = "";
+        System.out.print("Enter a sentence: ");
+        String sentence = sc.nextLine();
+        System.out.println("Original String: \"" + sentence + "\"");
+        System.out.print("Reversed String: \"");
+        String remove = removeSpecialCharacters(sentence);
+        for (int i = remove.length() - 1; i >= 0; i--) {
+            reversed = reversed + remove.charAt(i);
+        }
+        System.out.print(reversed);
+        System.out.println("\"");
+        if (isPalindrome(sentence)) {
+            System.out.print(sentence + " is a palindrome");
+        } else {
+            System.out.print(sentence + " is not a palindrome");
+        }
+        System.out.println();
+    }
+    public static String removeSpecialCharacters(String sentence) {
+        String remove = "";
+        for (int i = 0; i < sentence.length(); i++) {
+            char c = sentence.charAt(i);
+            if(c >= 'A' && c <= 'Z'){
+                c = (char)(c+('a'-'A'));
+            } 
+            if (c >= 'a' && c <= 'z' || c >= '0' && c <= '9') {
+                remove = remove + c;
+            }
+        }
+        return remove;
+    }
+    public static boolean isPalindrome(String sentence) {
+        String remove=removeSpecialCharacters(sentence);
+        String reversed = "";
+        for (int i = remove.length() - 1; i >= 0; i--) {
+            reversed = reversed + remove.charAt(i);
+        }
+        if (reversed.equals(remove)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
